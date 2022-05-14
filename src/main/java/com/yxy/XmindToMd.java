@@ -12,8 +12,7 @@ import java.util.function.Consumer;
 public class XmindToMd {
 
     public static void main(String[] args) {
-        String[] arg = {"-s", "/Users/chenyangm/Downloads/日语学习小册总结.pos", "-o"};
-        new XmindToMd().parseArgs(arg);
+        new XmindToMd().parseArgs(args);
     }
 
     public void parseArgs(String[] args)  {
