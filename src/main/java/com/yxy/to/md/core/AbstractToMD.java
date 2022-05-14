@@ -32,8 +32,8 @@ public abstract class AbstractToMD {
             }
         }
 
-        str.append("\n").append(tabNums).append(">")
-                .append(note.replaceAll("\n", "\n" + tabNums + ">")).append("\n");
+        str.append("\n").append(tabNums).append("> ")
+                .append(note.replaceAll("\n", "\n" + tabNums + "> ")).append("\n");
     }
 
     protected void addThis(GetTop get, StringBuilder str, int level) {

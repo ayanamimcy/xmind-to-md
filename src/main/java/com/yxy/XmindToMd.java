@@ -41,7 +41,7 @@ public class XmindToMd {
             }
 
             if (!commandLine.hasOption("s") || (commandLine.hasOption("s") && StringUtils.isBlank(commandLine.getOptionValue("s")))) {
-                System.out.println("清输入正确的文件路径");
+                System.out.println("请输入正确的文件路径");
                 System.exit(0);
             }
 
