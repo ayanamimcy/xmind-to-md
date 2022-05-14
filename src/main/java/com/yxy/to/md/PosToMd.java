@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yxy.to.md.core.AbstractToMD;
 import org.codehaus.plexus.util.IOUtil;
+import org.codehaus.plexus.util.StringUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -91,6 +92,12 @@ public class PosToMd extends AbstractToMD implements ToMdInterface {
                     .ifPresent(tags -> {
                         Set<String> labels = tags.findValues("text").stream().map(JsonNode::asText).collect(Collectors.toSet());
                         addLabels(labels, get, str);
+                    });
+
+            // 处理备注
+            Optional.ofNullable(children.get("note"))
+                    .ifPresent(note -> {
+                        if (StringUtils.isNotBlank(note.asText())) addNote(note.asText(), str, level);
                     });
 
             // 处理图片

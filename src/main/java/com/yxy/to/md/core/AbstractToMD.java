@@ -21,6 +21,20 @@ public abstract class AbstractToMD {
         }
     }
 
+    protected void addNote(String note, StringBuilder str, int level) {
+        StringBuilder tabNums = new StringBuilder();
+        if (level < 3) {
+            tabNums.append("\t");
+        } else {
+            for (int i = 0; i < level - 3 + 1; i++) {
+                tabNums.append("\t");
+            }
+        }
+
+        str.append("\n").append(tabNums).append(">")
+                .append(note.replaceAll("\n",  "\n" + tabNums + ">")).append("\n\n");
+    }
+
     protected void addThis(GetTop get, StringBuilder str, int level) {
         if (get.getTextType() == TextType.TITLE && level > 0) {
             // 跟上一行保持距离
