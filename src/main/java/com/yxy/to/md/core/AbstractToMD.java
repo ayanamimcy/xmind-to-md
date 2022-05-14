@@ -4,6 +4,7 @@ import java.util.Set;
 
 /**
  * 抽象父类
+ *
  * @author yangchao
  */
 public abstract class AbstractToMD {
@@ -24,22 +25,20 @@ public abstract class AbstractToMD {
     protected void addNote(String note, StringBuilder str, int level) {
         StringBuilder tabNums = new StringBuilder();
         if (level < 3) {
-            tabNums.append("\t");
+            tabNums.append("  ");
         } else {
             for (int i = 0; i < level - 3 + 1; i++) {
-                tabNums.append("\t");
+                tabNums.append("  ");
             }
         }
 
         str.append("\n").append(tabNums).append(">")
-                .append(note.replaceAll("\n",  "\n" + tabNums + ">")).append("\n\n");
+                .append(note.replaceAll("\n", "\n" + tabNums + ">")).append("\n");
     }
 
     protected void addThis(GetTop get, StringBuilder str, int level) {
-        if (get.getTextType() == TextType.TITLE && level > 0) {
-            // 跟上一行保持距离
-            str.append("\n");
-        }
+        // 跟上一行保持距离
+        str.append("\n");
 
         for (String t : get.getTitle().split("\n")) {
             if (t.trim().length() == 0) {
@@ -108,7 +107,7 @@ public abstract class AbstractToMD {
             } else {
                 // 标签
                 textType = TextType.LI;
-                addStr("\t", level - maxLevel - 1, against);
+                addStr("  ", level - maxLevel - 1, against);
                 grammar.append("- ");
                 end.append("  \n");
             }
